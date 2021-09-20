@@ -1,8 +1,8 @@
 NAME := fractol
 
-SRC := main.c draw.c init.c utils.c zoom.c	\
-	key.c mouse.c julia.c				\
-	some_libft.c tricorn.c color.c mandelbrot.c
+SRC := main.c draw.c init.c utils.c zoom.c		\
+	some_libft.c tricorn.c color.c mandelbrot.c	\
+	key.c mouse.c julia.c
 
 OBJS := $(SRC:.c=.o)
 
@@ -47,10 +47,10 @@ norminette:
 setDebian:
 	sudo apt-get update && sudo apt-get upgrade  && sudo apt-get install gcc make xorg libxext-dev libbsd-dev
 
-clean: minilibx_clean
+clean:
 	rm -f $(OBJS)
 
-fclean: clean
+fclean: clean minilibx_clean
 	rm -f $(NAME)
 
 minilibx_clean:
