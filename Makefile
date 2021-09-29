@@ -15,7 +15,8 @@ all: $(NAME)
 
 bonus: all
 
-$(NAME): $(OBJS) minilibx
+$(NAME): $(OBJS)
+	make --no-print-directory -C ./minilibx-linux
 	clang $(OBJS) -o $(NAME) $(CFLAG) minilibx-linux/libmlx_Linux.a $(FLAG)
 
 %.o: %.c
@@ -26,9 +27,6 @@ mandelbrot:
 
 tricorn:
 	./fractol tricorn
-
-minilibx:
-	make --no-print-directory -C ./minilibx-linux
 
 julia1:
 	./fractol julia -0.835 -0.2321
