@@ -99,6 +99,7 @@ int			rgb_color(t_draw *image, int iterations);
 /*Control Related				*/
 int			key_control(int k, t_draw *image);
 int			mouse_control(int button, int x, int y, t_draw *image);
+int			close_window(t_draw *image);
 
 /*Draw Related					*/
 void		draw_fractal(t_draw *image);

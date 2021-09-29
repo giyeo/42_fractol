@@ -6,11 +6,18 @@
 /*   By: rpaulino <rpaulino@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 14:44:17 by rpaulino          #+#    #+#             */
-/*   Updated: 2021/09/20 08:54:08 by rpaulino         ###   ########.fr       */
+/*   Updated: 2021/09/29 09:39:18 by rpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+int	close_window(t_draw *image)
+{
+	mlx_destroy_image(image->mlx_ptr, image->img.img);
+	mlx_destroy_window(image->mlx_ptr, image->win_ptr);
+	exit(0);
+}
 
 void	fractol(t_draw image)
 {
@@ -21,6 +28,7 @@ void	fractol(t_draw image)
 	image.img.addr = mlx_get_data_addr(image.img.img, &image.img.bits_per_pixel,
 			&image.img.line_length, &image.img.endian);
 	draw_fractal(&image);
+	mlx_hook(image.win_ptr, 33, 1L << 17, close_window, &image);
 	mlx_key_hook(image.win_ptr, key_control, &image);
 	mlx_mouse_hook (image.win_ptr, mouse_control, &image);
 	mlx_loop(image.mlx_ptr);

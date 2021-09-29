@@ -6,7 +6,7 @@
 /*   By: rpaulino <rpaulino@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 14:51:52 by rpaulino          #+#    #+#             */
-/*   Updated: 2021/09/20 08:09:39 by rpaulino         ###   ########.fr       */
+/*   Updated: 2021/09/29 09:35:55 by rpaulino         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,7 @@ int	key_control(int key, t_draw *image)
 	if (key > 60000)
 		draw = arrow_keys(key, smartmov, image, 0);
 	if (key == 65307)
-	{
-		mlx_destroy_window(image->mlx_ptr, image->win_ptr);
-		exit(0);
-	}
+		close_window(image);
 	draw = set_iterations(image, key);
 	draw = set_mode(image, key);
 	if (draw)
